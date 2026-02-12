@@ -1,0 +1,13 @@
+title: Dani learns
+description: Simple GitHub Pages blog
+baseurl: ""
+url: "https://daniela-v.github.io"
+
+markdown: kramdown
+permalink: /posts/:title/
+
+paginate: 5
+paginate_path: "/page:num/"
+
+plugins:
+  - jekyll-paginate

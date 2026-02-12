@@ -1,0 +1,47 @@
+---
+layout: default
+title: Home
+---
+
+<main class="tmpl-home container">
+
+  <ul class="postlist">
+    {% for post in site.posts %}
+    <li class="postlist-item">
+
+      <a href="{{ post.url | relative_url }}" class="postlist-link">
+        {{ post.title }}
+      </a>
+
+      <time class="postlist-date" datetime="{{ post.date | date_to_xmlschema }}">
+        {{ post.date | date: "%d %b %Y" }}
+      </time>
+
+      <span class="postlist-reading-time">
+        {{ post.content | number_of_words | divided_by:200 | plus:1 }} min read
+      </span>
+
+      {% if post.excerpt %}
+      <div class="postlist-summary-with-tag">
+        {{ post.excerpt }}
+      </div>
+      {% endif %}
+
+    </li>
+    {% endfor %}
+  </ul>
+
+  <!-- Pagination (if enabled) -->
+  {% if paginator %}
+  <nav class="pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}">Previous</a>
+    {% endif %}
+
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}">Next</a>
+    {% endif %}
+  </nav>
+  {% endif %}
+
+</main>
